@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    image: rails-app
+    container_name: rails_container
+    ports:
+      - "3002:4567"
+    volumes:
+      - .:/app
+      - gem_cache:/usr/local/bundle
+    environment:
+      - RACK_ENV=development
+      - DATABASE_HOST=mysql
+      - DATABASE_USER=user
+      - DATABASE_PASSWORD=user_password
+      - DATABASE_NAME=template-rails-app
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    container_name: rails_mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: template-rails-app
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  gem_cache:
+  mysql_data:
