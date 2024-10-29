@@ -1,19 +1,19 @@
-DOCKER_COMPOSE = docker-compose
+DC = docker-compose
 
 build:
-	$(DOCKER_COMPOSE) build --no-cache
+	$(DC) build
 
 up:
-	$(DOCKER_COMPOSE) up
+	$(DC) up
 
 down:
-	$(DOCKER_COMPOSE) down
+	$(DC) down
 
 bundle-install:
-	$(DOCKER_COMPOSE) run --rm web bundle install
+	$(DC) run --rm web bundle install
 
 bundle-add:
-	$(DOCKER_COMPOSE) run --rm web bundle add $(filter-out $@,$(MAKECMDGOALS))
+	$(DC) run --rm web bundle add $(filter-out $@,$(MAKECMDGOALS))
 
 clear:
 	docker ps -aq | xargs -r docker stop
@@ -35,16 +35,16 @@ inspect-mysql:
 
 # mysql -h 127.0.0.1 -P 3306 -u user -p
 rubocop:
-	$(DOCKER_COMPOSE) run --rm web bundle exec rubocop -A
+	$(DC) run --rm web bundle exec rubocop -A
 
 test:
-	$(DOCKER_COMPOSE) run --rm web bundle exec rspec
+	$(DC) run --rm web bundle exec rspec
 
 db-create:
-	$(DOCKER_COMPOSE) run --rm web bundle exec rails db:create
+	$(DC) run --rm web bundle exec rails db:create
 
 db-migrate:
-	$(DOCKER_COMPOSE) run --rm web bundle exec rails db:migrate
+	$(DC) run --rm web bundle exec rails db:migrate
 
 db-setup:
-	$(DOCKER_COMPOSE) run --rm web bundle exec rails db:setup
+	$(DC) run --rm web bundle exec rails db:setup

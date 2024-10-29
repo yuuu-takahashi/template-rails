@@ -14,12 +14,11 @@ default: &default
   encoding: utf8mb4
   username: <%= ENV.fetch("DATABASE_USER", "root") %>
   password: <%= ENV.fetch("DATABASE_PASSWORD", "") %>
-  host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
-  port: 3306
 
 development:
   <<: *default
-  database: <%= ENV.fetch("DATABASE_NAME", "template_rails_development") %>
+  database: template_rails_development
+  host: mysql
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -27,6 +26,7 @@ development:
 test:
   <<: *default
   database: template_rails_test
+  host: mysql-test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
