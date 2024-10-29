@@ -42,3 +42,9 @@ test:
 
 db-create:
 	$(DOCKER_COMPOSE) run --rm web bundle exec rails db:create
+
+db-migrate:
+	$(DOCKER_COMPOSE) run --rm web bundle exec rails db:migrate
+
+db-setup:
+	$(DOCKER_COMPOSE) run --rm web bundle exec rails db:setup
