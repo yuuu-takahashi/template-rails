@@ -9,16 +9,16 @@ services:
     image: rails-app
     container_name: rails_container
     ports:
-      - "3002:4567"
+      - "3000:3000"
     volumes:
       - .:/app
       - gem_cache:/usr/local/bundle
     environment:
-      - RACK_ENV=development
+      - RAILS_ENV=development
       - DATABASE_HOST=mysql
       - DATABASE_USER=user
       - DATABASE_PASSWORD=user_password
-      - DATABASE_NAME=template-rails-app
+      - DATABASE_NAME=template_rails_development
     depends_on:
       - mysql
 
@@ -29,7 +29,7 @@ services:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: template-rails-app
+      MYSQL_DATABASE: template_rails_development
       MYSQL_USER: user
       MYSQL_PASSWORD: user_password
     volumes:

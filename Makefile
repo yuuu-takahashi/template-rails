@@ -10,10 +10,10 @@ down:
 	$(DOCKER_COMPOSE) down
 
 bundle-install:
-	$(DOCKER_COMPOSE) run --rm app bundle install
+	$(DOCKER_COMPOSE) run --rm web bundle install
 
 bundle-add:
-	$(DOCKER_COMPOSE) run --rm app bundle add $(filter-out $@,$(MAKECMDGOALS))
+	$(DOCKER_COMPOSE) run --rm web bundle add $(filter-out $@,$(MAKECMDGOALS))
 
 clear:
 	docker ps -aq | xargs -r docker stop
@@ -35,7 +35,10 @@ inspect-mysql:
 
 # mysql -h 127.0.0.1 -P 3306 -u user -p
 rubocop:
-	$(DOCKER_COMPOSE) run --rm app bundle exec rubocop -A
+	$(DOCKER_COMPOSE) run --rm web bundle exec rubocop -A
 
 test:
-	$(DOCKER_COMPOSE) run --rm app bundle exec rspec
+	$(DOCKER_COMPOSE) run --rm web bundle exec rspec
+
+db-create:
+	$(DOCKER_COMPOSE) run --rm web bundle exec rails db:create
