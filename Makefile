@@ -48,3 +48,6 @@ db-migrate:
 
 db-setup:
 	$(DC) run --rm web bundle exec rails db:setup
+
+migrate:
+	$(DC) run --rm web bundle exec rails g migration $(filter-out $@,$(MAKECMDGOALS))
