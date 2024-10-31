@@ -37,7 +37,7 @@ inspect-mysql:
 rubocop:
 	$(DC) run --rm web bundle exec rubocop -A
 
-test:
+rspec:
 	$(DC) run --rm web bundle exec rspec
 
 db-create:
