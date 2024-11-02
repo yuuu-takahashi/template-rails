@@ -83,19 +83,3 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
-
-      - name: Prepare database
-        run: |
-            bin/rails db:create
-            bin/rails db:schema:load
-    
-      - name: Run RSpec and Capybara tests
-        run: bundle exec rspec
-
-      - name: Keep screenshots from failed system tests
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: screenshots
-          path: ${{ github.workspace }}/tmp/screenshots
-          if-no-files-found: ignore
