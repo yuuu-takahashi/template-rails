@@ -36,8 +36,8 @@ inspect-mysql:
 	docker inspect rails_mysql_container
 
 # mysql -h 127.0.0.1 -P 3306 -u user -p
-rubocop:
-	$(DC) run --rm web bundle exec rubocop -A
+lint:
+	$(DC) run --rm lint sh -c "bundle exec rubocop -A && bundle exec erb_lint --lint-all"
 
 rspec:
 	$(DC) run --rm web-test bundle exec rspec
