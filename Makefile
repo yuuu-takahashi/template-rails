@@ -15,11 +15,13 @@ bundle-install:
 bundle-add:
 	$(DC) run --rm web bundle add $(filter-out $@,$(MAKECMDGOALS))
 
+bundle-update:
+	$(DC) run --rm web bundle update $(filter-out $@,$(MAKECMDGOALS))
+
 clear:
 	docker ps -aq | xargs -r docker stop
 	docker ps -aq | xargs -r docker rm
 	docker volume ls -q | xargs -r docker volume rm
-	docker images -q | xargs -r docker rmi
 
 exec-rails:
 	docker exec -it rails_container bash
@@ -38,7 +40,7 @@ rubocop:
 	$(DC) run --rm web bundle exec rubocop -A
 
 rspec:
-	$(DC) run --rm web bundle exec rspec
+	$(DC) run --rm web-test bundle exec rspec
 
 db-create:
 	$(DC) run --rm web bundle exec rails db:create
