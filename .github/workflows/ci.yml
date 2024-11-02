@@ -85,15 +85,11 @@ jobs:
           bundler-cache: true
 
       - name: Prepare database
-        env:
-          ENV_FILE: .env.test
         run: |
             bin/rails db:create
             bin/rails db:schema:load
     
       - name: Run RSpec and Capybara tests
-        env:
-          ENV_FILE: .env.test
         run: bundle exec rspec
 
       - name: Keep screenshots from failed system tests
