@@ -82,6 +82,9 @@ jobs:
 
       - name: Log service status
         run: docker ps
+
+      - name: Display /etc/hosts
+        run: cat /etc/hosts
       
       - name: Check MySQL connection
         run: |
