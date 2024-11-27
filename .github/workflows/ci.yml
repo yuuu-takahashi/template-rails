@@ -87,9 +87,6 @@ jobs:
       - name: Install dependencies
         run: bundle install --path vendor/bundle
 
-      - name: Display /etc/hosts
-        run: cat /etc/hosts
-
       - name: Run tests
         env:
           RAILS_ENV: test
