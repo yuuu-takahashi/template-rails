@@ -4,13 +4,13 @@
 
 このリポジトリは、Railsのテンプレートプロジェクトです。
 
-### 技術スタック
+### 使用技術
 
-このプロジェクトは、以下の技術を使用して構築されています。
-
-- **Rails**: アプリケーションフレームワークとして使用
+- **Ruby**: プログラミング言語
+- **Rails**: Ruby製のWebアプリケーションフレームワーク
 - **MySQL**: データベース管理システム
-- **RuboCop**: Rubyのコードスタイルと品質を保つための静的解析ツール
+- **RuboCop**: Rubyのコード品質管理ツール
+- **Docker**: コンテナを使って開発環境を構築し、管理するツール
 
 ### 開発環境の構築
 
@@ -19,7 +19,6 @@
 #### 前提条件
 
 - **Docker Desktop**: Docker環境を簡単にセットアップできるツールです。
-- **Make**: 環境構築や各種コマンドの実行を簡略化するための `Makefile` を使用しています。LinuxやmacOSでは標準でインストールされていますが、Windowsの場合はWSL (Windows Subsystem for Linux) を利用するか、GNU Makeをインストールしてください。
 
 #### セットアップ手順
 
@@ -54,9 +53,3 @@ docker-compose exec web bundle exec rspec
 ## デプロイ、リリース方法
 
  TODO:
-
-## 参考
-
-- [Rails Documentation](https://railsguides.jp/)
-- [Docker Documentation](https://docs.docker.com/)
-- [RuboCop Documentation](https://docs.rubocop.org/)
