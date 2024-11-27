@@ -80,6 +80,9 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Log service status
+        run: docker ps
+
       - name: Run tests
         env:
           RAILS_ENV: test
