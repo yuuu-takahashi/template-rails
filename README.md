@@ -26,8 +26,7 @@
 ```bash
 git clone git@github.com:yuuu-takahashi/template-rails.git
 cd template-rails
-make build
-make db-setup
+docker-compose run --rm web bundle exec rails db:setup
 ```
 
 ### 開発サーバーの起動
@@ -35,7 +34,7 @@ make db-setup
 以下のコマンドを実行して開発サーバーを起動します
 
 ```bash
-make up
+docker-compose up
 ```
 
 開発サーバーは <http://localhost:3000> で確認できます
@@ -45,7 +44,11 @@ make up
 以下のコマンドを実行してテストを実行します
 
 ```bash
-make test
+# コンテナ起動
+docker-compose up
+
+# 別ターミナルでテスト実行
+docker-compose exec web bundle exec rspec
 ```
 
 ## デプロイ、リリース方法
