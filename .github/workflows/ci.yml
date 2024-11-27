@@ -82,7 +82,9 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
-          DATABASE_URL: mysql2://root@mysql:3306/template-rails_test
+          DATABASE_HOST: db
+          DATABASE_USER: root
+          DATABASE_PASSWORD: password
         run: |
           bundle exec rails db:create
           bundle exec rails db:schema:load
