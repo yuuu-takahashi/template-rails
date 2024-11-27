@@ -12,25 +12,32 @@
 - **RuboCop**: Rubyのコード品質管理ツール
 - **Docker**: コンテナを使って開発環境を構築し、管理するツール
 
-### 開発環境の構築
+### 開発環境構築
 
 このプロジェクトでは **Docker** を利用して開発環境を構築します。
 
 #### 前提条件
 
-- **Docker Desktop**: Docker環境を簡単にセットアップできるツールです。
+- Docker Desktop をインストール
+- Visual Studio Code (VSCode) と Remote - Containers拡張機能 をインストール
 
-#### セットアップ手順
+#### セットアップ手順 (Dev Containerを使う)
 
-```bash
-git clone git@github.com:yuuu-takahashi/template-rails.git
-cd template-rails
-docker-compose run --rm web bundle exec rails db:setup
-```
+1. リポジトリのクローン
 
-### 開発サーバーの起動
+    ```bash
+    git clone git@github.com:yuuu-takahashi/template-rails.git
+    cd template-rails
+    ```
 
-以下のコマンドを実行して開発サーバーを起動します
+2. VSCodeで Reopen in Container を選択して、Dev Containerを開く
+3. データベースのセットアップ
+
+    ```bash
+    docker-compose run --rm web bundle exec rails db:setup
+    ```
+
+#### 開発サーバーの起動 (Dev Container内)
 
 ```bash
 docker-compose up
@@ -45,8 +52,7 @@ docker-compose up
 ```bash
 # コンテナ起動
 docker-compose up
-
-# 別ターミナルでテスト実行
+# 別ターミナルでテストを実行します。
 docker-compose exec web bundle exec rspec
 ```
 
