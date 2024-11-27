@@ -26,5 +26,10 @@
       }
     }
   },
+  "containerEnv": {
+    "DATABASE_HOST": "db",
+    "DATABASE_USER": "root",
+    "DATABASE_PASSWORD": "password"
+  },
   "postCreateCommand": "bundle install"
 }
