@@ -86,9 +86,6 @@ jobs:
 
       - name: Install dependencies
         run: bundle install --path vendor/bundle
-      
-      - name: Log service status
-        run: docker ps
 
       - name: Display /etc/hosts
         run: cat /etc/hosts
