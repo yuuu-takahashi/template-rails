@@ -82,7 +82,7 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
-          DATABASE_HOST: db
+          DATABASE_HOST: mysql
           DATABASE_USER: root
           DATABASE_PASSWORD: password
         run: |
