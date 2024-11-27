@@ -63,23 +63,30 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    container: ruby:3.1.2
+  
     services:
       mysql:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: password
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        options: --health-cmd='mysqladmin ping' --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - name: Cache Ruby gems
+        uses: actions/cache@v3
         with:
-          ruby-version: .ruby-version
-          bundler-cache: true
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
 
+      - name: Install dependencies
+        run: bundle install --path vendor/bundle
+      
       - name: Log service status
         run: docker ps
 
