@@ -16,9 +16,6 @@
       "settings": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true,
-        "files.associations": {
-          "*.erb": "erb"
-        },
         "[ruby]": {
           "editor.defaultFormatter": "Shopify.ruby-lsp",
           "editor.formatOnSave": true,
@@ -26,12 +23,8 @@
           "editor.semanticHighlighting.enabled": true,
           "editor.formatOnType": true
         },
-        "[erb]": {
-          "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
-        },
         "rubyLsp.formatter": "rubocop",
-        "rubyLsp.testTimeout": 60,
-        "vscode-erb-beautify.useBundler": true
+        "rubyLsp.testTimeout": 60
       }
     }
   },

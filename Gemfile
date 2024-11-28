@@ -20,13 +20,13 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem "rspec-rails", "~> 7.0"
   gem "prettier"
+  gem "prettier-plugin-erbを"
 end
 
 group :development do
   gem "web-console"
   gem "ruby-lsp", ">= 0.20.0", "< 0.21.0"
   gem "ruby-lsp-rails"
-  gem "htmlbeautifier"
 end
 
 group :test do

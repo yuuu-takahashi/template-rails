@@ -55,7 +55,9 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
-      - name: RuboCop
+      - name: formatter
+        run: bundle exec prettier --write .
+      - name: lint
         run: bundle exec rubocop
 
   test:
