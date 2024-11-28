@@ -10,11 +10,15 @@
         "esbenp.prettier-vscode",
         "DavidAnson.vscode-markdownlint",
         "mhutchie.git-graph",
-        "github.vscode-github-actions"
+        "github.vscode-github-actions",
+        "aliariff.vscode-erb-beautify"
       ],
       "settings": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true,
+        "files.associations": {
+          "*.erb": "erb"
+        },
         "[ruby]": {
           "editor.defaultFormatter": "Shopify.ruby-lsp",
           "editor.formatOnSave": true,
@@ -22,15 +26,14 @@
           "editor.semanticHighlighting.enabled": true,
           "editor.formatOnType": true
         },
+        "[erb]": {
+          "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
+        },
         "rubyLsp.formatter": "rubocop",
-        "rubyLsp.testTimeout": 60
+        "rubyLsp.testTimeout": 60,
+        "vscode-erb-beautify.useBundler": true
       }
     }
-  },
-  "containerEnv": {
-    "DATABASE_HOST": "db",
-    "DATABASE_USER": "root",
-    "DATABASE_PASSWORD": "password"
   },
   "postCreateCommand": "bundle exec rails db:setup"
 }

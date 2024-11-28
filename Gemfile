@@ -18,7 +18,6 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ], require: "debug/prelude"
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
-  gem "erb_lint"
   gem "rspec-rails", "~> 7.0"
   gem "prettier"
 end
@@ -27,6 +26,7 @@ group :development do
   gem "web-console"
   gem "ruby-lsp", ">= 0.20.0", "< 0.21.0"
   gem "ruby-lsp-rails"
+  gem "htmlbeautifier"
 end
 
 group :test do

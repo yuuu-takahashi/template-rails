@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [ main ]
+    branches: [main]
 defaults:
   run:
     shell: bash
@@ -56,15 +56,13 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
       - name: RuboCop
-        run: bundle exec rubocop
-      - name: ERB Lint
-        run: bundle exec erb_lint --lint-all
+        run: bundle exec rubocops
 
   test:
     runs-on: ubuntu-latest
 
     container: ruby:3.1.2
-  
+
     services:
       mysql:
         image: mysql:8.0
