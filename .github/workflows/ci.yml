@@ -88,6 +88,10 @@ jobs:
         run: bundle install --path vendor/bundle
 
       - name: Precompile assets
+        env:
+          DATABASE_HOST: mysql
+          DATABASE_USER: root
+          DATABASE_PASSWORD: password
         run: bundle exec rake assets:precompile
 
       - name: Run tests
