@@ -96,11 +96,18 @@ jobs:
           } >> $GITHUB_ENV
 
       - name: Precompile assets
+        env:
+          DATABASE_HOST: mysql
+          DATABASE_USER: root
+          DATABASE_PASSWORD: password
         run: bundle exec rake assets:precompile
 
       - name: Run tests
         env:
           RAILS_ENV: test
+          DATABASE_HOST: mysql
+          DATABASE_USER: root
+          DATABASE_PASSWORD: password
         run: |
           bundle exec rails db:create
           bundle exec rails db:schema:load
