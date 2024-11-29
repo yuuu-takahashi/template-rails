@@ -95,8 +95,21 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
 
+      - name: Cache Node.js modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
       - name: Install dependencies
         run: bundle install --path vendor/bundle
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+          yarn-cache: true
 
       - name: Precompile assets
         env:
