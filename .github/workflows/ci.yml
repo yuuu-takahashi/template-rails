@@ -89,9 +89,11 @@ jobs:
 
       - name: Set environment variables
         run: |
-          echo "DATABASE_HOST=mysql" >> $GITHUB_ENV
-          echo "DATABASE_USER=root" >> $GITHUB_ENV
-          echo "DATABASE_PASSWORD=password" >> $GITHUB_ENV
+          {
+            echo "DATABASE_HOST=mysql";
+            echo "DATABASE_USER=root";
+            echo "DATABASE_PASSWORD=password";
+          } >> $GITHUB_ENV
 
       - name: Precompile assets
         run: bundle exec rake assets:precompile
