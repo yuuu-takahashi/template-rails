@@ -30,25 +30,22 @@
     cd template-rails
     ```
 
-2. VSCodeで Reopen in Container を選択して、Dev Containerを開く
+2. VS Codeで Reopen in Container を選択して、Dev Containerを開く
 
 #### 開発サーバーの起動 (Dev Container内)
 
 ```bash
-docker-compose up
+bundle exec rails s
 ```
 
 開発サーバーは <http://localhost:3000> で確認できます
 
-## テスト方法
+## テスト方法 (Dev Container内)
 
 以下のコマンドを実行してテストを実行します
 
 ```bash
-# コンテナ起動
-docker-compose up
-# 別ターミナルでテストを実行します。
-docker-compose exec web bundle exec rspec
+bundle exec rspec
 ```
 
 ## デプロイ、リリース方法
