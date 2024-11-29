@@ -1,15 +1,18 @@
 {
   "name": "Existing Dockerfile",
-  "build": {
-    "context": "..",
-    "dockerfile": "../Dockerfile"
-  },
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "web",
+  "workspaceFolder": "/app",
   "customizations": {
     "vscode": {
       "extensions": [
+        "DavidAnson.vscode-markdownlint",
         "Shopify.ruby-lsp",
         "esbenp.prettier-vscode",
-        "DavidAnson.vscode-markdownlint"
+        "github.vscode-github-actions",
+        "mhutchie.git-graph",
+        "bradlc.vscode-tailwindcss",
+        "ms-azuretools.vscode-docker"
       ],
       "settings": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -26,5 +29,5 @@
       }
     }
   },
-  "postCreateCommand": "bundle install"
+  "postCreateCommand": "bundle exec rails db:setup"
 }

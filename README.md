@@ -31,11 +31,6 @@
     ```
 
 2. VSCodeで Reopen in Container を選択して、Dev Containerを開く
-3. データベースのセットアップ
-
-    ```bash
-    docker-compose run --rm web bundle exec rails db:setup
-    ```
 
 #### 開発サーバーの起動 (Dev Container内)
 
