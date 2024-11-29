@@ -1,6 +1,6 @@
 {
   "name": "Existing Dockerfile",
-  "dockerComposeFile": "./.devcontainer/docker-compose.yml",
+  "dockerComposeFile": "./docker-compose.yml",
   "service": "web",
   "workspaceFolder": "/app",
   "customizations": {
