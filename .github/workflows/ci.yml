@@ -55,8 +55,19 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+          yarn-cache: true
+
       - name: Install dependencies
         run: bundle install --path vendor/bundle
+      - name: Install Node.js dependencies
+        run: yarn install
+
+      - name: format
+        run: bundle exec rbprettier --write '**/*'
       - name: lint
         run: bundle exec rubocop
 
