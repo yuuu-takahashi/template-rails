@@ -117,7 +117,6 @@ GEM
       temple (>= 0.8.2)
       thor
       tilt
-    htmlbeautifier (1.4.3)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.0.3)
@@ -354,7 +353,6 @@ DEPENDENCIES
   debug
   factory_bot_rails
   faker
-  htmlbeautifier
   importmap-rails
   jbuilder
   mysql2 (~> 0.5)
