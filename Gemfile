@@ -34,3 +34,7 @@ group :test do
   gem "factory_bot_rails"
   gem "faker"
 end
+
+gem "prettier_print", "~> 1.2"
+gem "syntax_tree", "~> 6.2"
+gem "syntax_tree-rbs", "~> 1.0"
