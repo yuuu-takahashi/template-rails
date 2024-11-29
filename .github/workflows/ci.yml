@@ -67,7 +67,7 @@ jobs:
         run: yarn install
 
       - name: format
-        run: bundle exec rbprettier --write '**/*'
+        run: bundle exec rbprettier --write .
       - name: lint
         run: bundle exec rubocop
 
