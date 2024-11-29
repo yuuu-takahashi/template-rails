@@ -4,13 +4,19 @@
 
 このリポジトリは、Railsのテンプレートプロジェクトです。
 
-### 使用技術
+### 使用言語・フレームワーク・ライブラリ
 
 - **Ruby**: プログラミング言語
 - **Rails**: Ruby製のWebアプリケーションフレームワーク
 - **MySQL**: データベース管理システム
+- **Prettier**: フォーマッター
 - **RuboCop**: Rubyのコード品質管理ツール
-- **Docker**: コンテナを使って開発環境を構築し、管理するツール
+- **htmlbeautifier**: HTML/ERBコードの整形ツール
+- **RSpec**: テストフレームワーク
+- **TailwindCSS**: CSSフレームワーク
+- **Docker**: コンテナ管理ツール
+- **Node.js**: フロントエンド環境
+- **Ruby LSP**: エディタ補完と静的解析
 
 ### 開発環境構築
 
@@ -25,32 +31,29 @@
 
 1. リポジトリのクローン
 
-    ```bash
-    git clone git@github.com:yuuu-takahashi/template-rails.git
-    cd template-rails
-    ```
+   ```bash
+   git clone git@github.com:yuuu-takahashi/template-rails.git
+   cd template-rails
+   ```
 
-2. VSCodeで Reopen in Container を選択して、Dev Containerを開く
+2. VS Codeで Reopen in Container を選択して、Dev Containerを開く
 
 #### 開発サーバーの起動 (Dev Container内)
 
 ```bash
-docker-compose up
+bundle exec rails s
 ```
 
 開発サーバーは <http://localhost:3000> で確認できます
 
-## テスト方法
+## テスト方法 (Dev Container内)
 
 以下のコマンドを実行してテストを実行します
 
 ```bash
-# コンテナ起動
-docker-compose up
-# 別ターミナルでテストを実行します。
-docker-compose exec web bundle exec rspec
+bundle exec rspec
 ```
 
 ## デプロイ、リリース方法
 
- TODO:
+TODO:

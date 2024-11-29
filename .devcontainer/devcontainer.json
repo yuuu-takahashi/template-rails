@@ -25,7 +25,14 @@
           "editor.formatOnType": true
         },
         "rubyLsp.formatter": "rubocop",
-        "rubyLsp.testTimeout": 60
+        "rubyLsp.testTimeout": 60,
+        "files.associations": {
+          "*.html.erb": "erb"
+        },
+        "[erb]": {
+          "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
+        },
+        "vscode-erb-beautify.useBundler": true
       }
     }
   },

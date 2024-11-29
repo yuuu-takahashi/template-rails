@@ -117,6 +117,7 @@ GEM
       temple (>= 0.8.2)
       thor
       tilt
+    htmlbeautifier (1.4.3)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.0.3)
@@ -353,10 +354,12 @@ DEPENDENCIES
   debug
   factory_bot_rails
   faker
+  htmlbeautifier
   importmap-rails
   jbuilder
   mysql2 (~> 0.5)
   prettier
+  prettier_print (~> 1.2)
   puma (>= 5.0)
   rails (~> 7.2.2)
   rspec-rails (~> 7.0)
@@ -366,6 +369,8 @@ DEPENDENCIES
   selenium-webdriver
   sprockets-rails
   stimulus-rails
+  syntax_tree (~> 6.2)
+  syntax_tree-rbs (~> 1.0)
   tailwindcss-rails
   turbo-rails
   tzinfo-data
