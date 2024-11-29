@@ -25,10 +25,10 @@
 
 1. リポジトリのクローン
 
-    ```bash
-    git clone git@github.com:yuuu-takahashi/template-rails.git
-    cd template-rails
-    ```
+   ```bash
+   git clone git@github.com:yuuu-takahashi/template-rails.git
+   cd template-rails
+   ```
 
 2. VS Codeで Reopen in Container を選択して、Dev Containerを開く
 
@@ -50,4 +50,4 @@ bundle exec rspec
 
 ## デプロイ、リリース方法
 
- TODO:
+TODO:

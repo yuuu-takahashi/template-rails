@@ -9,13 +9,15 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
 gem "bcrypt", "~> 3.1.7"
-gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mswin mswin64 mingw x64_mingw jruby]
 gem "bootsnap", require: false
 gem "tailwindcss-rails"
 gem "view_component", ">= 2.41"
 
 group :development, :test do
-  gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ], require: "debug/prelude"
+  gem "debug",
+      platforms: %i[mri mswin mswin64 mingw x64_mingw],
+      require: "debug/prelude"
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
   gem "rspec-rails", "~> 7.0"
