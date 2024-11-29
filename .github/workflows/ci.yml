@@ -87,14 +87,6 @@ jobs:
       - name: Install dependencies
         run: bundle install --path vendor/bundle
 
-      - name: Set environment variables
-        run: |
-          {
-            echo "DATABASE_HOST=\"mysql\"";
-            echo "DATABASE_USER=\"root\"";
-            echo "DATABASE_PASSWORD=\"password\"";
-          } >> $GITHUB_ENV
-
       - name: Precompile assets
         env:
           DATABASE_HOST: mysql
