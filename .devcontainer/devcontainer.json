@@ -6,12 +6,12 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "DavidAnson.vscode-markdownlint",
         "Shopify.ruby-lsp",
         "esbenp.prettier-vscode",
-        "DavidAnson.vscode-markdownlint",
-        "mhutchie.git-graph",
         "github.vscode-github-actions",
-        "aliariff.vscode-erb-beautify"
+        "mhutchie.git-graph",
+        "bradlc.vscode-tailwindcss"
       ],
       "settings": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
