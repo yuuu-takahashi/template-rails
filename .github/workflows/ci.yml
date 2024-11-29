@@ -57,10 +57,8 @@ jobs:
           bundler-cache: true
       - name: Install dependencies
         run: bundle install --path vendor/bundle
-      - name: Precompile assets
-        run: bundle exec rake assets:precompile
-      # - name: formatter
-      #   run: bundle exec prettier --write .
+      - name: formatter
+        run: bundle exec prettier --write .
       - name: lint
         run: bundle exec rubocop
 
@@ -90,6 +88,9 @@ jobs:
 
       - name: Install dependencies
         run: bundle install --path vendor/bundle
+
+      - name: Precompile assets
+        run: bundle exec rake assets:precompile
 
       - name: Run tests
         env:
