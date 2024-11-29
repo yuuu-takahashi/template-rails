@@ -90,9 +90,9 @@ jobs:
       - name: Set environment variables
         run: |
           {
-            echo "DATABASE_HOST='mysql'";
-            echo "DATABASE_USER='root'";
-            echo "DATABASE_PASSWORD='password'";
+            echo 'DATABASE_HOST="mysql"';
+            echo 'DATABASE_USER="root"';
+            echo 'DATABASE_PASSWORD="password"';
           } >> $GITHUB_ENV
 
       - name: Precompile assets
