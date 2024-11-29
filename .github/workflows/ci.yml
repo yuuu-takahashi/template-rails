@@ -57,8 +57,6 @@ jobs:
           bundler-cache: true
       - name: Install dependencies
         run: bundle install --path vendor/bundle
-      - name: formatter
-        run: bundle exec prettier --write .
       - name: lint
         run: bundle exec rubocop
 

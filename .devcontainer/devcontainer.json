@@ -11,7 +11,8 @@
         "esbenp.prettier-vscode",
         "github.vscode-github-actions",
         "mhutchie.git-graph",
-        "bradlc.vscode-tailwindcss"
+        "bradlc.vscode-tailwindcss",
+        "ms-azuretools.vscode-docker"
       ],
       "settings": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
