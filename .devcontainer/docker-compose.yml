@@ -1,10 +1,10 @@
 services:
   web:
     build:
-      context: .
+      context: ..
       dockerfile: Dockerfile
     volumes:
-      - .:/app
+      - ..:/app
       - gem_cache:/usr/local/bundle
     ports:
       - "3000:3000"
