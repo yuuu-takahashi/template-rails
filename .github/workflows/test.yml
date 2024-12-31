@@ -41,5 +41,12 @@ jobs:
         run: bundle install --path vendor/bundle
 
       - name: Run tests
+        env:
+          RAILS_ENV: test
+          DATABASE_HOST: mysql
+          DATABASE_USER: root
+          DATABASE_PASSWORD: password
         run: |
+          bundle exec rails db:create
+          bundle exec rails db:schema:load
           bundle exec rspec
