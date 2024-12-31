@@ -17,6 +17,7 @@ jobs:
 
     container:
       image: ruby:3.3.6
+      env_file: .env.test
 
     services:
       db:
