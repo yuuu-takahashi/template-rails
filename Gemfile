@@ -29,15 +29,11 @@ group :development do
   gem "web-console"
   gem "ruby-lsp", ">= 0.20.0", "< 0.21.0"
   gem "ruby-lsp-rails"
+  gem "factory_bot_rails"
 end
 
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
-  gem "factory_bot_rails"
   gem "faker"
 end
-
-gem "prettier_print", "~> 1.2"
-gem "syntax_tree", "~> 6.2"
-gem "syntax_tree-rbs", "~> 1.0"
