@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe TextComponent, type: :component do
-  it "renders something useful" do
+  it 'renders something useful' do
     expect(
-      render_inline(described_class.new(text: "Hello, components!")).to_html
-    ).to include("Hello, components!")
+      render_inline(described_class.new(text: 'Hello, components!')).to_html
+    ).to include('Hello, components!')
   end
 end
