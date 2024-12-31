@@ -2,23 +2,21 @@ FROM ruby:3.3
 
 WORKDIR /workspace
 
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl default-mysql-client libjemalloc2 libvips build-essential default-libmysqlclient-dev git pkg-config && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives && \
-    curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
-    apt-get install -y nodejs && \
-    npm install -g yarn
+RUN apt-get update -qq && apt-get install --no-install-recommends -y \
+    curl \
+    openssh-client \
+    default-mysql-client \
+    tree \
+    && curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
+    && apt-get install -y nodejs \
+    && rm -rf /var/lib/apt/lists/*
 
-ENV BUNDLE_PATH="/usr/local/bundle"
+RUN npm install -g yarn
+
+COPY package.json yarn.lock ./
+RUN yarn install
 
 COPY Gemfile Gemfile.lock ./
-RUN bundle install
-
-COPY packege.json yarn.lock ./
-RUN yarn install --check-files
+RUN bundle install --path 'vendor/bundle'
 
 COPY . .
-
-EXPOSE 3000
-
-CMD ["sh", "-c", "rm -f /app/tmp/pids/server.pid && bundle exec rails s -b '0.0.0.0'"]
