@@ -1,6 +1,6 @@
-FROM ruby:3.1.2-slim
+FROM ruby:3.3
 
-WORKDIR /app
+WORKDIR /workspace
 
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl default-mysql-client libjemalloc2 libvips build-essential default-libmysqlclient-dev git pkg-config && \
