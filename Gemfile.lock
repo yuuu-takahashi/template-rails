@@ -359,7 +359,6 @@ DEPENDENCIES
   jbuilder
   mysql2 (~> 0.5)
   prettier
-  prettier_print (~> 1.2)
   puma (>= 5.0)
   rails (~> 7.2.2)
   rspec-rails (~> 7.0)
@@ -369,8 +368,6 @@ DEPENDENCIES
   selenium-webdriver
   sprockets-rails
   stimulus-rails
-  syntax_tree (~> 6.2)
-  syntax_tree-rbs (~> 1.0)
   tailwindcss-rails
   turbo-rails
   tzinfo-data
