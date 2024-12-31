@@ -1,43 +1,39 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "rails", "~> 7.2.2"
-gem "sprockets-rails"
-gem "mysql2", "~> 0.5"
-gem "puma", ">= 5.0"
-gem "importmap-rails"
-gem "turbo-rails"
-gem "stimulus-rails"
-gem "jbuilder"
-gem "bcrypt", "~> 3.1.7"
-gem "tzinfo-data", platforms: %i[mswin mswin64 mingw x64_mingw jruby]
-gem "bootsnap", require: false
-gem "tailwindcss-rails"
-gem "view_component", ">= 2.41"
+gem 'bcrypt', '~> 3.1.7'
+gem 'bootsnap', require: false
+gem 'importmap-rails'
+gem 'jbuilder'
+gem 'mysql2', '~> 0.5'
+gem 'puma', '>= 5.0'
+gem 'rails', '~> 7.2.2'
+gem 'sprockets-rails'
+gem 'stimulus-rails'
+gem 'tailwindcss-rails'
+gem 'turbo-rails'
+gem 'tzinfo-data', platforms: %i[mswin mswin64 mingw x64_mingw jruby]
+gem 'view_component', '>= 2.41'
 
 group :development, :test do
-  gem "debug",
+  gem 'brakeman', require: false
+  gem 'debug',
       platforms: %i[mri mswin mswin64 mingw x64_mingw],
-      require: "debug/prelude"
-  gem "brakeman", require: false
-  gem "rubocop-rails-omakase", require: false
-  gem "rspec-rails", "~> 7.0"
-  gem "prettier"
-  gem "htmlbeautifier"
+      require: 'debug/prelude'
+  gem 'factory_bot_rails'
+  gem 'htmlbeautifier'
+  gem 'prettier'
+  gem 'rspec-rails', '~> 7.0'
+  gem 'rubocop-rails-omakase', require: false
 end
 
 group :development do
-  gem "web-console"
-  gem "ruby-lsp", ">= 0.20.0", "< 0.21.0"
-  gem "ruby-lsp-rails"
+  gem 'ruby-lsp', '>= 0.20.0', '< 0.21.0'
+  gem 'ruby-lsp-rails'
+  gem 'web-console'
 end
 
 group :test do
-  gem "capybara"
-  gem "selenium-webdriver"
-  gem "factory_bot_rails"
-  gem "faker"
+  gem 'capybara'
+  gem 'faker'
+  gem 'selenium-webdriver'
 end
-
-gem "prettier_print", "~> 1.2"
-gem "syntax_tree", "~> 6.2"
-gem "syntax_tree-rbs", "~> 1.0"
