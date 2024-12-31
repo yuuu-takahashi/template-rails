@@ -1,6 +1,13 @@
 {
+  "name": "sample",
+  "version": "1.0.0",
+  "description": "",
   "devDependencies": {
-    "@prettier/plugin-ruby": "^4.0.4",
-    "prettier": "^3.4.1"
-  }
+    "prettier": "^3.4.2"
+  },
+  "scripts": {
+    "format": "prettier --write ."
+  },
+  "author": "",
+  "license": "ISC"
 }
