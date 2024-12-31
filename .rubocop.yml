@@ -1,4 +1,5 @@
-inherit_gem:
-  rubocop-rails-omakase: rubocop.yml
-inherit_from:
-  - node_modules/@prettier/plugin-ruby/rubocop.yml
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
