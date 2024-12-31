@@ -1,59 +1,47 @@
 # template-rails
 
-## Railsテンプレート
+このリポジトリはRuby on Railsのテンプレートプロジェクトです。
+このプロジェクトは、[Dev Container](https://code.visualstudio.com/docs/devcontainers/containers)での利用を想定した構成になっています。
 
-このリポジトリは、Railsのテンプレートプロジェクトです。
+## ディレクトリ構成
+TODO:
 
-### 使用言語・フレームワーク・ライブラリ
+## 開発環境構築
 
-- **Ruby**: プログラミング言語
-- **Rails**: Ruby製のWebアプリケーションフレームワーク
-- **MySQL**: データベース管理システム
-- **Prettier**: フォーマッター
-- **RuboCop**: Rubyのコード品質管理ツール
-- **htmlbeautifier**: HTML/ERBコードの整形ツール
-- **RSpec**: テストフレームワーク
-- **TailwindCSS**: CSSフレームワーク
-- **Docker**: コンテナ管理ツール
-- **Node.js**: フロントエンド環境
-- **Ruby LSP**: エディタ補完と静的解析
+### 必要なツール
+- [VS Code](https://code.visualstudio.com/)
+- [Docker](https://www.docker.com/ja-jp/)
+- VS Codeの[Dev Containers拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
-### 開発環境構築
-
-このプロジェクトでは **Docker** を利用して開発環境を構築します。
-
-#### 前提条件
-
-- Docker Desktop をインストール
-- Visual Studio Code (VSCode) と Remote - Containers拡張機能 をインストール
-
-#### セットアップ手順 (Dev Containerを使う)
-
-1. リポジトリのクローン
+1. リポジトリをクローン
 
    ```bash
    git clone git@github.com:yuuu-takahashi/template-rails.git
-   cd template-rails
+   cd template-sinatra
    ```
 
-2. VS Codeで Reopen in Container を選択して、Dev Containerを開く
+2. 環境変数の設定
 
-#### 開発サーバーの起動 (Dev Container内)
+   ```bash
+   cp example.env .env.development
+   ```
 
-```bash
-bundle exec rails s
-```
+3. VS Codeのの左下「><」アイコンをクリックし、「Remote-Containers: Reopen in Container」を選択し、起動
 
-開発サーバーは <http://localhost:3000> で確認できます
+4. データベース準備
 
-## テスト方法 (Dev Container内)
+   ```bash
+   bundle exec rails db:setup
+   bundle exec rake db:seed
+   ```
 
-以下のコマンドを実行してテストを実行します
+5. 開発サーバー起動
 
-```bash
-bundle exec rspec
-```
+   ```bash
+   bundle exec rails s
+   ```
 
-## デプロイ、リリース方法
+ブラウザで <http://localhost:3000> を開き、表示確認
 
+## 開発作業ガイド
 TODO:
