@@ -39,11 +39,6 @@ jobs:
 
       - name: Install dependencies
         run: bundle install --path vendor/bundle
-        env:
-          DATABASE_HOST: db
-          DATABASE_USER: root
-          DATABASE_PASSWORD: password
-        run: bundle exec rake assets:precompile
 
       - name: Run tests
         env:
@@ -53,7 +48,6 @@ jobs:
           DATABASE_PASSWORD: password
           DATABASE_NAME: template-rails_test
           MYSQL_ROOT_PASSWORD: password
-
         run: |
           bundle exec rails db:create db:migrate
           bundle exec rspec
