@@ -9,6 +9,9 @@ Dotenv.overload('.env.test')
 
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
+puts "RAILS_ENV: #{Rails.env}"
+puts "Connected to database: #{ActiveRecord::Base.connection.current_database}"
+
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
