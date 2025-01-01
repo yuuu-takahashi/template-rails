@@ -1,11 +1,13 @@
 require 'spec_helper'
 require 'dotenv'
-Dotenv.load('.env.test')
-require_relative '../config/environment'
-abort('The Rails environment is running in production mode!') if Rails.env.production?
-require 'rspec/rails'
+
 require 'view_component/test_helpers'
 require 'faker'
+require_relative '../config/environment'
+require 'rspec/rails'
+Dotenv.overload('.env.test')
+
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
