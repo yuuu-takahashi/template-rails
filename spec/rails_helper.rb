@@ -1,8 +1,8 @@
 require 'spec_helper'
-require 'dotenv'
-Dotenv.overload('.env.test')
 require 'view_component/test_helpers'
 require 'faker'
+
+ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rspec/rails'
 
