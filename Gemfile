@@ -19,6 +19,7 @@ group :development, :test do
       platforms: %i[mri mswin mswin64 mingw x64_mingw],
       require: 'debug/prelude'
   gem 'dotenv-rails'
+  gem 'erb_lint'
   gem 'factory_bot_rails'
   gem 'htmlbeautifier'
   gem 'prettier'

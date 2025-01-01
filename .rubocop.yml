@@ -3,3 +3,9 @@ Style/Documentation:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - vendor/**/*
+    - node_modules/**/*
