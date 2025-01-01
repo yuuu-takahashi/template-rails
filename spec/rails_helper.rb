@@ -3,6 +3,11 @@ require 'view_component/test_helpers'
 require 'faker'
 
 ENV['RAILS_ENV'] ||= 'test'
+require 'dotenv-rails'
+Dotenv.load(
+  ".env.#{ENV['RAILS_ENV']}",
+  '.env'
+)
 require_relative '../config/environment'
 require 'rspec/rails'
 
