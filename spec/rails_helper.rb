@@ -5,6 +5,7 @@ require_relative '../config/environment'
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'view_component/test_helpers'
+require 'faker'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
