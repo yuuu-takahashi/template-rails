@@ -8,8 +8,7 @@
       "extensions": [
         "esbenp.prettier-vscode",
         "Shopify.ruby-extensions-pack",
-        "aliariff.vscode-erb-beautify",
-        "bradlc.vscode-tailwindcss"
+        "aliariff.vscode-erb-beautify"
       ],
       "settings": {
         "editor.tabSize": 2,
