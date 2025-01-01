@@ -40,6 +40,26 @@ jobs:
       - name: Install dependencies
         run: bundle install --path vendor/bundle
 
+      - name: Cache Node.js modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Precompile assets
+        env:
+          DATABASE_HOST: db
+          DATABASE_USER: root
+          DATABASE_PASSWORD: password
+        run: bundle exec rake assets:precompile
+
       - name: Run tests
         env:
           RAILS_ENV: test
