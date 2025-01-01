@@ -1,9 +1,15 @@
 require 'spec_helper'
+require 'view_component/test_helpers'
+require 'faker'
+
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
-abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
-require 'view_component/test_helpers'
+
+abort('The Rails environment is running in production mode!') if Rails.env.production?
+
+puts "RAILS_ENV: #{Rails.env}"
+puts "Connected to database: #{ActiveRecord::Base.connection.current_database}"
 
 begin
   ActiveRecord::Migration.maintain_test_schema!

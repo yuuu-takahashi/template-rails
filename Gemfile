@@ -6,10 +6,9 @@ gem 'importmap-rails'
 gem 'jbuilder'
 gem 'mysql2', '~> 0.5'
 gem 'puma', '>= 5.0'
-gem 'rails', '~> 7.2.2'
+gem 'rails', '~> 8.0.1'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
-gem 'tailwindcss-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mswin mswin64 mingw x64_mingw jruby]
 gem 'view_component', '>= 2.41'
@@ -19,6 +18,7 @@ group :development, :test do
   gem 'debug',
       platforms: %i[mri mswin mswin64 mingw x64_mingw],
       require: 'debug/prelude'
+  gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'htmlbeautifier'
   gem 'prettier'
