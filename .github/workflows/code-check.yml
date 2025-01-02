@@ -21,14 +21,17 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22.x"
-          cache: "yarn"
+          node-version: '22.x'
+          cache: 'yarn'
 
       - name: Install dependencies
         run: yarn install
 
       - name: format
         run: yarn format
+
+      - name: lint
+        run: yarn lint
 
   lint:
     runs-on: ubuntu-latest
