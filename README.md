@@ -7,6 +7,10 @@
 
 TODO:
 
+```bash
+tree -I 'vendor|node_modules|tmp'
+```
+
 ## 開発環境構築
 
 ### 必要なツール
@@ -19,7 +23,7 @@ TODO:
 
    ```bash
    git clone git@github.com:yuuu-takahashi/template-rails.git
-   cd template-sinatra
+   cd template-rails
    ```
 
 2. 環境変数の設定
@@ -33,18 +37,31 @@ TODO:
 4. データベース準備
 
    ```bash
-   bundle exec rails db:setup
-   bundle exec rake db:seed
+   bin/rails db:prepare
    ```
 
 5. 開発サーバー起動
 
    ```bash
-   bundle exec rails s
+   bin/rails s
    ```
 
 ブラウザで <http://localhost:3000> を開き、表示確認
 
 ## 開発作業ガイド
 
-TODO:
+- テストの実行
+
+```bash
+bundle exec rspec
+```
+
+- コードの静的解析と修正
+
+```bash
+yarn format
+yarn lint
+bundle exec rubocop -A
+bundle exec erb_lint app/views/**/*.erb
+find app/views -name "*.erb" -exec bundle exec htmlbeautifier {} \;
+```
