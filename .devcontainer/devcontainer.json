@@ -7,6 +7,7 @@
     "vscode": {
       "extensions": [
         "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
         "Shopify.ruby-extensions-pack",
         "aliariff.vscode-erb-beautify"
       ],
@@ -19,6 +20,7 @@
         "editor.codeActionsOnSave": {
           "source.fixAll": "explicit"
         },
+        "eslint.validate": ["javascript"],
         "[ruby]": {
           "editor.defaultFormatter": "Shopify.ruby-lsp"
         },
