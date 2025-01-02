@@ -1,4 +1,3 @@
-require 'spec_helper'
 require 'view_component/test_helpers'
 require 'faker'
 
