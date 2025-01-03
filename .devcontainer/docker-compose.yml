@@ -10,7 +10,7 @@ services:
     env_file: ../.env.development
     tty: true
     stdin_open: true
-    command: ["sleep", "infinity"]
+    command: ['sleep', 'infinity']
     depends_on:
       - db
 
