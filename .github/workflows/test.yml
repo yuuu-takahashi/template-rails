@@ -43,9 +43,9 @@ jobs:
             ${{ runner.os }}-gems-
 
       - name: Install dependencies
-        run: BUNDLE_WITHOUT=development bundle install --path vendor/bundle
+        run: bundle install --path vendor/bundle
 
       - name: Run tests
         run: |
-          BUNDLE_WITHOUT="" bundle install --path vendor/bundle
+          bin/rails db:prepare
           bundle exec rspec
