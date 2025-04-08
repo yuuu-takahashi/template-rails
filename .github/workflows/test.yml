@@ -47,5 +47,5 @@ jobs:
 
       - name: Run tests
         run: |
-          bin/rails db:prepare
+          BUNDLE_WITHOUT="" bundle install --path vendor/bundle
           bundle exec rspec
