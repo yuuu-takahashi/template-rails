@@ -13,10 +13,4 @@ RUN apt-get update -qq && apt-get install --no-install-recommends -y \
 
 RUN npm install -g yarn
 
-COPY package.json yarn.lock ./
-RUN yarn install
-
-COPY Gemfile Gemfile.lock ./
-RUN bundle install --path 'vendor/bundle'
-
 COPY . .

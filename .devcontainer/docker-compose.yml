@@ -7,16 +7,23 @@ services:
       - ..:/workspace
       - node_modules_cache:/workspace/node_modules
       - gem_cache:/workspace/vendor/bundle
-    env_file: ../.env.development
+    environment:
+      RAILS_ENV: development
+      DATABASE_HOST: db
+      DATABASE_USER: root
+      DATABASE_PASSWORD: password
+      BUNDLE_PATH: /vendor/bundle
+      BUNDLER_VERSION: 2.3.7
     tty: true
     stdin_open: true
-    command: ['sleep', 'infinity']
+    command: /bin/sh -c "yarn install && bundle install && sleep infinity"
     depends_on:
       - db
 
   db:
     image: mysql:8
-    env_file: ../.env.development
+    environment:
+      MYSQL_ROOT_PASSWORD: password
     volumes:
       - db_data:/var/lib/mysql
 
