@@ -12,7 +12,12 @@ const HelloWorld = (props) => {
       <form>
         <label className={style.bright} htmlFor="name">
           Say hello to:
-          <input id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          <input
+            id="name"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
         </label>
       </form>
     </div>

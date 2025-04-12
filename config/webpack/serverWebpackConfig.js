@@ -1,10 +1,9 @@
-// The source code including full typescript support is available at: 
+// The source code including full typescript support is available at:
 // https://github.com/shakacode/react_on_rails_demo_ssr_hmr/blob/master/config/webpack/serverWebpackConfig.js
 
-const { merge, config } = require('shakapacker');
-const commonWebpackConfig = require('./commonWebpackConfig');
-
-const webpack = require('webpack');
+import { merge, config } from 'shakapacker';
+import commonWebpackConfig from './commonWebpackConfig';
+import webpack from 'webpack';
 
 const configureServer = () => {
   // We need to use "merge" because the clientConfigObject, EVEN after running
@@ -32,7 +31,8 @@ const configureServer = () => {
   serverWebpackConfig.module.rules.forEach((loader) => {
     if (loader.use && loader.use.filter) {
       loader.use = loader.use.filter(
-        (item) => !(typeof item === 'string' && item.match(/mini-css-extract-plugin/)),
+        (item) =>
+          !(typeof item === 'string' && item.match(/mini-css-extract-plugin/)),
       );
     }
   });
@@ -41,7 +41,9 @@ const configureServer = () => {
   serverWebpackConfig.optimization = {
     minimize: false,
   };
-  serverWebpackConfig.plugins.unshift(new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }));
+  serverWebpackConfig.plugins.unshift(
+    new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
+  );
 
   // Custom output for the server-bundle that matches the config in
   // config/initializers/react_on_rails.rb
@@ -79,7 +81,10 @@ const configureServer = () => {
         } else if (typeof item.loader === 'string') {
           testValue = item.loader;
         }
-        return !(testValue.match(/mini-css-extract-plugin/) || testValue === 'style-loader');
+        return !(
+          testValue.match(/mini-css-extract-plugin/) ||
+          testValue === 'style-loader'
+        );
       });
       const cssLoader = rule.use.find((item) => {
         let testValue;
@@ -97,7 +102,10 @@ const configureServer = () => {
       }
 
       // Skip writing image files during SSR by setting emitFile to false
-    } else if (rule.use && (rule.use.loader === 'url-loader' || rule.use.loader === 'file-loader')) {
+    } else if (
+      rule.use &&
+      (rule.use.loader === 'url-loader' || rule.use.loader === 'file-loader')
+    ) {
       rule.use.options.emitFile = false;
     }
   });
@@ -115,4 +123,4 @@ const configureServer = () => {
   return serverWebpackConfig;
 };
 
-module.exports = configureServer;
+export default configureServer;

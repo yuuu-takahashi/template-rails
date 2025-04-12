@@ -1,7 +1,7 @@
-// The source code including full typescript support is available at: 
+// The source code including full typescript support is available at:
 // https://github.com/shakacode/react_on_rails_demo_ssr_hmr/blob/master/config/webpack/clientWebpackConfig.js
 
-const commonWebpackConfig = require('./commonWebpackConfig');
+import commonWebpackConfig from './commonWebpackConfig';
 
 const configureClient = () => {
   const clientConfig = commonWebpackConfig();
@@ -15,4 +15,4 @@ const configureClient = () => {
   return clientConfig;
 };
 
-module.exports = configureClient;
+export default configureClient;
