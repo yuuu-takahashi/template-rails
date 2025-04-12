@@ -29,7 +29,7 @@ end
 
 group :development do
   gem 'rubocop', '~> 1.71.0'
-  gem 'ruby-lsp', '~> 0.4.0'
+  gem 'ruby-lsp', '~> 0.23.14'
   gem 'web-console'
 end
 
