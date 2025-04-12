@@ -3,17 +3,44 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
+  "packageManager": "yarn@1.22.22",
   "devDependencies": {
-    "prettier": "^3.4.2",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint": "^9.20.0",
     "@eslint/js": "^9.20.0",
-    "globals": "^15.14.0"
+    "eslint": "^9.20.0",
+    "eslint-config-prettier": "^8.3.0",
+    "globals": "^15.14.0",
+    "prettier": "^3.4.2",
+    "webpack-dev-server": "4"
   },
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint . --fix"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "private": true,
+  "babel": {
+    "presets": [
+      "./node_modules/shakapacker/package/babel/preset.js"
+    ]
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "dependencies": {
+    "@babel/core": "7",
+    "@babel/plugin-transform-runtime": "7",
+    "@babel/preset-env": "7",
+    "@babel/runtime": "7",
+    "@types/babel__core": "7",
+    "@types/webpack": "5",
+    "babel-loader": "8",
+    "compression-webpack-plugin": "9",
+    "shakapacker": "8.2.0",
+    "terser-webpack-plugin": "5",
+    "webpack": "5",
+    "webpack-assets-manifest": "5",
+    "webpack-cli": "4",
+    "webpack-merge": "5"
+  }
 }

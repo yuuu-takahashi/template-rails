@@ -7,12 +7,12 @@ gem 'jbuilder'
 gem 'mysql2', '~> 0.5'
 gem 'puma', '>= 5.0'
 gem 'rails', '~> 8.0.2'
+gem 'react_on_rails'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mswin mswin64 mingw x64_mingw jruby]
 gem 'view_component', '>= 2.41'
-gem "react_on_rails"
 
 group :development, :test do
   gem 'brakeman', require: false
@@ -39,3 +39,5 @@ group :test do
   gem 'faker'
   gem 'selenium-webdriver'
 end
+
+gem 'shakapacker', '= 8.2'
