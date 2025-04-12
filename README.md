@@ -36,7 +36,7 @@ tree -I 'vendor|node_modules|tmp'
 4. 開発サーバー起動
 
    ```bash
-   bin/rails s
+   bin/dev
    ```
 
 ブラウザで <http://localhost:3000> を開き、表示確認

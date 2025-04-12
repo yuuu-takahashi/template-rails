@@ -48,4 +48,5 @@ jobs:
       - name: Run tests
         run: |
           bin/rails db:prepare
+          bin/shakapacker
           bundle exec rspec
