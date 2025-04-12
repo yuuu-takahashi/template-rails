@@ -1,11 +1,20 @@
 // The source code including full typescript support is available at:
 // https://github.com/shakacode/react_on_rails_demo_ssr_hmr/blob/master/config/webpack/serverWebpackConfig.js
 
-import { merge, config } from 'shakapacker';
-import commonWebpackConfig from './commonWebpackConfig';
+import { Configuration } from 'webpack';
+import shakapacker from 'shakapacker';
+import commonWebpackConfig from './commonWebpackConfig.js';
 import webpack from 'webpack';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const configureServer = () => {
+const { merge, config } = shakapacker;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Using any for complex webpack types to avoid excessive type errors
+const configureServer = (): Configuration => {
   // We need to use "merge" because the clientConfigObject, EVEN after running
   // toWebpackConfig() is a mutable GLOBAL. Thus any changes, like modifying the
   // entry value will result in changing the client config!
@@ -13,9 +22,13 @@ const configureServer = () => {
   const serverWebpackConfig = commonWebpackConfig();
 
   // We just want the single server bundle entry
-  const serverEntry = {
-    'server-bundle': serverWebpackConfig.entry['server-bundle'],
-  };
+  const serverEntry: Record<string, any> = {};
+  if (
+    serverWebpackConfig.entry &&
+    typeof serverWebpackConfig.entry === 'object'
+  ) {
+    serverEntry['server-bundle'] = resolve(__dirname, '../../app/javascript/packs/server-bundle.ts');
+  }
 
   if (!serverEntry['server-bundle']) {
     throw new Error(
@@ -28,22 +41,29 @@ const configureServer = () => {
   // Remove the mini-css-extract-plugin from the style loaders because
   // the client build will handle exporting CSS.
   // replace file-loader with null-loader
-  serverWebpackConfig.module.rules.forEach((loader) => {
-    if (loader.use && loader.use.filter) {
-      loader.use = loader.use.filter(
-        (item) =>
-          !(typeof item === 'string' && item.match(/mini-css-extract-plugin/)),
-      );
-    }
-  });
+  if (serverWebpackConfig.module && serverWebpackConfig.module.rules) {
+    (serverWebpackConfig.module.rules as any[]).forEach((rule: any) => {
+      if (rule && rule.use && Array.isArray(rule.use)) {
+        rule.use = rule.use.filter(
+          (item: any) =>
+            !(
+              typeof item === 'string' && item.match(/mini-css-extract-plugin/)
+            ),
+        );
+      }
+    });
+  }
 
   // No splitting of chunks for a server bundle
   serverWebpackConfig.optimization = {
     minimize: false,
   };
-  serverWebpackConfig.plugins.unshift(
-    new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
-  );
+
+  if (serverWebpackConfig.plugins) {
+    serverWebpackConfig.plugins.unshift(
+      new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
+    );
+  }
 
   // Custom output for the server-bundle that matches the config in
   // config/initializers/react_on_rails.rb
@@ -59,56 +79,40 @@ const configureServer = () => {
 
   // Don't hash the server bundle b/c would conflict with the client manifest
   // And no need for the MiniCssExtractPlugin
-  serverWebpackConfig.plugins = serverWebpackConfig.plugins.filter(
-    (plugin) =>
-      plugin.constructor.name !== 'WebpackAssetsManifest' &&
-      plugin.constructor.name !== 'MiniCssExtractPlugin' &&
-      plugin.constructor.name !== 'ForkTsCheckerWebpackPlugin',
-  );
+  if (serverWebpackConfig.plugins) {
+    serverWebpackConfig.plugins = (serverWebpackConfig.plugins as any[]).filter(
+      (plugin: any) =>
+        plugin.constructor.name !== 'WebpackAssetsManifest' &&
+        plugin.constructor.name !== 'MiniCssExtractPlugin' &&
+        plugin.constructor.name !== 'ForkTsCheckerWebpackPlugin',
+    );
+  }
 
   // Configure loader rules for SSR
   // Remove the mini-css-extract-plugin from the style loaders because
   // the client build will handle exporting CSS.
   // replace file-loader with null-loader
-  const rules = serverWebpackConfig.module.rules;
-  rules.forEach((rule) => {
-    if (Array.isArray(rule.use)) {
-      // remove the mini-css-extract-plugin and style-loader
-      rule.use = rule.use.filter((item) => {
-        let testValue;
-        if (typeof item === 'string') {
-          testValue = item;
-        } else if (typeof item.loader === 'string') {
-          testValue = item.loader;
-        }
-        return !(
-          testValue.match(/mini-css-extract-plugin/) ||
-          testValue === 'style-loader'
-        );
-      });
-      const cssLoader = rule.use.find((item) => {
-        let testValue;
-
-        if (typeof item === 'string') {
-          testValue = item;
-        } else if (typeof item.loader === 'string') {
-          testValue = item.loader;
-        }
-
-        return testValue.includes('css-loader');
-      });
-      if (cssLoader && cssLoader.options) {
-        cssLoader.options.modules = { exportOnlyLocals: true };
+  if (serverWebpackConfig.module && serverWebpackConfig.module.rules) {
+    const rules = serverWebpackConfig.module.rules as any[];
+    rules.forEach((rule: any) => {
+      if (rule && Array.isArray(rule.use)) {
+        // remove the mini-css-extract-plugin and style-loader
+        rule.use = rule.use.filter((item: any) => {
+          let testValue: string | undefined;
+          if (typeof item === 'string') {
+            testValue = item;
+          } else if (item && typeof item.loader === 'string') {
+            testValue = item.loader;
+          }
+          return (
+            testValue !== 'style-loader' &&
+            testValue !== 'css-loader' &&
+            !testValue?.match(/mini-css-extract-plugin/)
+          );
+        });
       }
-
-      // Skip writing image files during SSR by setting emitFile to false
-    } else if (
-      rule.use &&
-      (rule.use.loader === 'url-loader' || rule.use.loader === 'file-loader')
-    ) {
-      rule.use.options.emitFile = false;
-    }
-  });
+    });
+  }
 
   // eval works well for the SSR bundle because it's the fastest and shows
   // lines in the server bundle which is good for debugging SSR

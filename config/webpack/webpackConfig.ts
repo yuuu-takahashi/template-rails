@@ -1,10 +1,26 @@
 // The source code including full typescript support is available at:
 // https://github.com/shakacode/react_on_rails_demo_ssr_hmr/blob/master/config/webpack/webpackConfig.js
 
-import clientWebpackConfig from './clientWebpackConfig';
-import serverWebpackConfig from './serverWebpackConfig';
+import shakapacker from 'shakapacker';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { Configuration } from 'webpack';
+import clientWebpackConfig from './clientWebpackConfig.js';
+import serverWebpackConfig from './serverWebpackConfig.js';
 
-const webpackConfig = (envSpecific) => {
+const { env } = shakapacker;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+type EnvSpecificFunction = (
+  clientConfig: Configuration,
+  serverConfig: Configuration,
+) => void;
+
+const webpackConfig = (
+  envSpecific?: EnvSpecificFunction,
+): Configuration | Configuration[] => {
   const clientConfig = clientWebpackConfig();
   const serverConfig = serverWebpackConfig();
 
@@ -12,7 +28,7 @@ const webpackConfig = (envSpecific) => {
     envSpecific(clientConfig, serverConfig);
   }
 
-  let result;
+  let result: Configuration | Configuration[];
   // For HMR, need to separate the the client and server webpack configurations
   if (process.env.WEBPACK_SERVE || process.env.CLIENT_BUNDLE_ONLY) {
     // eslint-disable-next-line no-console
