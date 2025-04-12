@@ -19,14 +19,20 @@ const configureClient = (): Configuration => {
     // error shows referring to window["webpackJsonp"]. That is because the
     // client config is going to try to load chunks.
     delete (clientConfig.entry as any)['server-bundle'];
-    
+
     // Update entry points to use TypeScript files
     if ((clientConfig.entry as any)['application']) {
-      (clientConfig.entry as any)['application'] = resolve(__dirname, '../../app/javascript/packs/application.ts');
+      (clientConfig.entry as any)['application'] = resolve(
+        __dirname,
+        '../../app/javascript/packs/application.ts',
+      );
     }
-    
+
     if ((clientConfig.entry as any)['HelloWorld']) {
-      (clientConfig.entry as any)['HelloWorld'] = resolve(__dirname, '../../app/javascript/packs/hello-world-bundle.ts');
+      (clientConfig.entry as any)['HelloWorld'] = resolve(
+        __dirname,
+        '../../app/javascript/packs/hello-world-bundle.ts',
+      );
     }
   }
 

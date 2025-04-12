@@ -16,6 +16,8 @@ declare module 'shakapacker' {
   export const inliningCss: boolean;
 
   export function generateWebpackConfig(): Configuration;
-  export function merge(...configs: Configuration[]): Configuration;
+  export function merge(...configs: Configuration[]): Configuration {
+    return configs.reduce((acc, config) => ({ ...acc, ...config }), {});
+  }
   export const config: ShakapackerConfig;
-} 
+}

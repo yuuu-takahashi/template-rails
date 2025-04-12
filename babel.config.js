@@ -6,7 +6,7 @@ import shakapackerPreset from 'shakapacker/package/babel/preset.js';
 export default function (api) {
   const defaultConfigFunc = shakapackerPreset;
   const resultConfig = defaultConfigFunc(api);
-  const isProductionEnv = api.env('production');
+  // const isProductionEnv = api.env('production');
 
   const changesOnDefault = {
     presets: [['@babel/preset-react', { runtime: 'automatic' }]],

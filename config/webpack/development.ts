@@ -1,4 +1,4 @@
-// The source code including full typescript support is available at: 
+// The source code including full typescript support is available at:
 // https://github.com/shakacode/react_on_rails_demo_ssr_hmr/blob/master/config/webpack/development.ts
 
 import shakapacker from 'shakapacker';
@@ -8,7 +8,7 @@ import { Configuration } from 'webpack';
 
 const { devServer, inliningCss } = shakapacker;
 
-const developmentEnvOnly = (clientWebpackConfig: Configuration, _serverWebpackConfig: Configuration): void => {
+const developmentEnvOnly = (clientWebpackConfig: Configuration): void => {
   // plugins
   if (inliningCss) {
     // Note, when this is run, we're building the server and client bundles in separate processes.
@@ -24,4 +24,4 @@ const developmentEnvOnly = (clientWebpackConfig: Configuration, _serverWebpackCo
 };
 
 const config = webpackConfig(developmentEnvOnly);
-export default config; 
+export default config;

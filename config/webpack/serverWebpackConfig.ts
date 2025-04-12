@@ -8,7 +8,7 @@ import webpack from 'webpack';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-const { merge, config } = shakapacker;
+const { config } = shakapacker;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -27,7 +27,10 @@ const configureServer = (): Configuration => {
     serverWebpackConfig.entry &&
     typeof serverWebpackConfig.entry === 'object'
   ) {
-    serverEntry['server-bundle'] = resolve(__dirname, '../../app/javascript/packs/server-bundle.ts');
+    serverEntry['server-bundle'] = resolve(
+      __dirname,
+      '../../app/javascript/packs/server-bundle.ts',
+    );
   }
 
   if (!serverEntry['server-bundle']) {
