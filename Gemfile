@@ -28,8 +28,8 @@ group :development, :test do
 end
 
 group :development do
-  gem 'ruby-lsp', '>= 0.20.0', '< 0.24.0'
-  gem 'ruby-lsp-rails'
+  gem 'rubocop', '~> 1.71.0'
+  gem 'ruby-lsp', '~> 0.4.0'
   gem 'web-console'
 end
 
