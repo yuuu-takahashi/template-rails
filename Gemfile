@@ -7,6 +7,7 @@ gem 'jbuilder'
 gem 'mysql2', '~> 0.5'
 gem 'puma', '>= 5.0'
 gem 'rails', '~> 8.0.2'
+gem 'react_on_rails'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
@@ -38,3 +39,5 @@ group :test do
   gem 'faker'
   gem 'selenium-webdriver'
 end
+
+gem 'shakapacker', '= 8.2'

@@ -1,6 +1,5 @@
 # template-rails
 
-このリポジトリはRuby on Railsのテンプレートプロジェクトです。
 このプロジェクトは、[Dev Container](https://code.visualstudio.com/docs/devcontainers/containers)での利用を想定した構成になっています。
 
 ## ディレクトリ構成
@@ -26,24 +25,18 @@ tree -I 'vendor|node_modules|tmp'
    cd template-rails
    ```
 
-2. 環境変数の設定
+2. VS Codeのの左下「><」アイコンをクリックし、「Remote-Containers: Reopen in Container」を選択し、起動
 
-   ```bash
-   cp example.env .env.development
-   ```
-
-3. VS Codeのの左下「><」アイコンをクリックし、「Remote-Containers: Reopen in Container」を選択し、起動
-
-4. データベース準備
+3. データベース準備
 
    ```bash
    bin/rails db:prepare
    ```
 
-5. 開発サーバー起動
+4. 開発サーバー起動
 
    ```bash
-   bin/rails s
+   bin/dev
    ```
 
 ブラウザで <http://localhost:3000> を開き、表示確認
@@ -62,6 +55,14 @@ bundle exec rspec
 yarn format
 yarn lint
 bundle exec rubocop -A
-bundle exec erb_lint app/views/**/*.erb
-find app/views -name "*.erb" -exec bundle exec htmlbeautifier {} \;
+bundle exec erb_lint app/views/**/*.erb find app/views -name "*.erb" -exec bundle exec htmlbeautifier {} \;
+```
+
+- デバッグ方法
+
+```ruby
+def show
+  user = User.find(params[:id])
+  byebug  # 処理を止めて対話的に確認
+end
 ```

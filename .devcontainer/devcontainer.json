@@ -7,9 +7,19 @@
     "vscode": {
       "extensions": [
         "esbenp.prettier-vscode",
+        "aliariff.vscode-erb-beautify",
         "dbaeumer.vscode-eslint",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "Gruntfuggly.todo-tree",
+        "mhutchie.git-graph",
         "Shopify.ruby-extensions-pack",
-        "aliariff.vscode-erb-beautify"
+        "aliariff.vscode-erb-beautify",
+        "streetsidesoftware.code-spell-checker",
+        "donjayamanne.githistory",
+        "github.vscode-github-actions",
+        "yzhang.markdown-all-in-one",
+        "DavidAnson.vscode-markdownlint"
       ],
       "settings": {
         "editor.tabSize": 2,
