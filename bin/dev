@@ -14,4 +14,4 @@ then
 fi
 
 # Run the development server with ts-node support
-NODE_OPTIONS="--loader ts-node/esm" foreman start -f Procfile.dev "$@"
+foreman start -f Procfile.dev "$@"
