@@ -12,6 +12,7 @@ gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mswin mswin64 mingw x64_mingw jruby]
 gem 'view_component', '>= 2.41'
+gem "react_on_rails"
 
 group :development, :test do
   gem 'brakeman', require: false
