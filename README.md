@@ -59,3 +59,10 @@ bundle exec erb_lint app/views/**/*.erb find app/views -name "*.erb" -exec bundl
 ```
 
 - デバッグ方法
+
+```ruby
+def show
+  user = User.find(params[:id])
+  byebug  # 処理を止めて対話的に確認
+end
+```
