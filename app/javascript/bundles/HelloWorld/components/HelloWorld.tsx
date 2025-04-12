@@ -19,7 +19,9 @@ const HelloWorld: React.FC<HelloWorldProps> = ({ name: initialName }) => {
             id="name"
             type="text"
             value={name}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setName(e.target.value)
+            }
           />
         </label>
       </form>
@@ -27,4 +29,4 @@ const HelloWorld: React.FC<HelloWorldProps> = ({ name: initialName }) => {
   );
 };
 
-export default HelloWorld; 
+export default HelloWorld;

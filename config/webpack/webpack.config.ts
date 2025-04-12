@@ -11,7 +11,7 @@ const envSpecificConfig = async (): Promise<Configuration> => {
   // Try to load TypeScript file first, then fall back to JavaScript
   const tsPath = resolve(__dirname, `${env.nodeEnv}.ts`);
   const jsPath = resolve(__dirname, `${env.nodeEnv}.js`);
-  
+
   if (existsSync(tsPath)) {
     console.log(`Loading ENV specific webpack configuration file ${tsPath}`);
     const config = await import(`${tsPath}?${Date.now()}`);
@@ -21,10 +21,12 @@ const envSpecificConfig = async (): Promise<Configuration> => {
     const config = await import(`${jsPath}?${Date.now()}`);
     return config.default;
   } else {
-    throw new Error(`Could not find file to load ${tsPath} or ${jsPath}, based on NODE_ENV`);
+    throw new Error(
+      `Could not find file to load ${tsPath} or ${jsPath}, based on NODE_ENV`,
+    );
   }
 };
 
 // Use a synchronous approach to avoid top-level await
 const config = await envSpecificConfig();
-export default config; 
+export default config;
