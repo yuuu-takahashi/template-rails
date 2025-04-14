@@ -28,7 +28,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'rubocop', '~> 1.71.0'
+  gem 'rubocop', '~> 1.75.2'
   gem 'ruby-lsp', '~> 0.4.0'
   gem 'web-console'
 end
